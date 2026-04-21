@@ -1,4 +1,5 @@
 import {createContext, useContext, useEffect, useState} from "react";
+import API from "../src/config/api.js";
 
 const AuthContext = createContext();
 
@@ -8,7 +9,7 @@ export const AuthProvider = ({children}) => {
 
  const fetchProfile = async () => {
      try {
-         const response=await fetch("http://localhost:3000/api/user/auth/me",{
+         const response=await fetch(`${API}/api/user/auth/me`,{
              method:"GET",
              credentials:"include",
              headers: {
