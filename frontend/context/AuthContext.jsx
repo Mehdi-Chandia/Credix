@@ -33,9 +33,6 @@ export const AuthProvider = ({children}) => {
 
      }catch (error) {
          console.log(error.message);
-         if(error.response.status === 401){
-             console.log("user is not authorized");
-         }
          setUser(null);
 
      }finally {
