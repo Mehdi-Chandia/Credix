@@ -55,7 +55,7 @@ const AdminDashboard = () => {
 
     const logOut=async ()=>{
         try {
-            const response = await fetch("http://localhost:3000/api/user/logout", {
+            const response = await fetch(`${API}/api/user/logout`, {
                 method: "GET",
                 credentials: "include",
             })
@@ -74,7 +74,7 @@ const AdminDashboard = () => {
 
     const reviewRequest=async (id)=>{
         try {
-            const response = await fetch(`http://localhost:3000/api/request/credential/${id}`, {
+            const response = await fetch(`${API}/api/request/credential/${id}`, {
                 method:"GET",
                 credentials: "include",
             })

@@ -65,7 +65,7 @@ const UserDashboard = () => {
 
     const logOut=async ()=>{
         try {
-            const response = await fetch("http://localhost:3000/api/user/logout", {
+            const response = await fetch(`${API}/api/user/logout`, {
                 method: "GET",
                 credentials: "include",
             })
