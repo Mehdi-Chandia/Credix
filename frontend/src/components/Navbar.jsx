@@ -12,7 +12,7 @@ const Navbar=()=>{
     return(
         <>
             <nav>
-      <div className="text-white flex gap-4 justify-around items-center p-4">
+      <div className="text-white flex gap-4 justify-around items-center p-4 ">
       <div className="flex gap-2">
           {/*<img className="top-6" src={certificate} alt="logo" width={32}/>*/}
           <h2 className="font-bold text-2xl">Credi<span className="text-[#ff3c6e] text-4xl ">X</span></h2>

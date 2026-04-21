@@ -11,9 +11,14 @@ const app = express()
 const port = process.env.PORT || 3000;
 
 app.use(cors({
-    origin:process.env.FRONTEND_URL,
+    origin: [
+        "http://localhost:5173",
+        "https://credix-sigma.vercel.app"
+    ],
     credentials: true,
-}))
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+}));
+app.options("*", cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
