@@ -1,0 +1,37 @@
+import dotenv from "dotenv";
+import express from "express";
+import {dbConnection} from "./configure/db.js";
+import cookieParser from "cookie-parser";
+import userRouter from "./routes/user.route.js";
+import requestsRouter from "./routes/request.route.js";
+import cors from "cors";
+
+dotenv.config();
+const app = express()
+const port = 3000
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+
+dbConnection()
+
+//routes
+
+app.use(cors({
+    origin:process.env.FRONTEND_URL,
+    credentials: true,
+}))
+
+app.use("/api/user",userRouter)
+app.use("/api/request",requestsRouter)
+
+
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+})
