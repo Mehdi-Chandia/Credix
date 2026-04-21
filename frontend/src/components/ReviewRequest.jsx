@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
+import API from "../config/api.js"
 
 const ReviewRequest = () => {
     const { id } = useParams();
@@ -20,7 +21,7 @@ const ReviewRequest = () => {
     useEffect(() => {
         const fetchRequest = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/api/request/credential/${id}`, {
+                const response = await fetch(`${API}/api/request/credential/${id}`, {
                     method: "GET",
                     credentials: "include",
                 });

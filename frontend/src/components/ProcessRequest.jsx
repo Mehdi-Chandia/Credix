@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {useAuth} from "../../context/AuthContext.jsx";
 import {toast} from "react-toastify";
+import API from "../config/api.js";
 
 const ProcessRequest = () => {
     const {user,isloading}=useAuth();
@@ -35,7 +36,7 @@ const ProcessRequest = () => {
 
     const submitReview=async ()=>{
         try {
-            const response=await fetch(`http://localhost:3000/api/request/update/${id}`,{
+            const response=await fetch(`${API}/api/request/update/${id}`,{
                 method: "PUT",
                 credentials:"include",
                 headers: {

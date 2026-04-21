@@ -11,6 +11,7 @@ import requests from "../../assets/credentials.png";
 import profileGif from "../../assets/user.gif";
 import Loader from "../Loader.jsx";
 import {toast} from "react-toastify";
+import API from "../../config/api.js";
 
 const UserDashboard = () => {
     const [activeMenu, setActiveMenu] = useState('overview');
@@ -46,7 +47,7 @@ const UserDashboard = () => {
         const fetchMyRequests = async () => {
             if (!user) return;
             try {
-                const response = await fetch("http://localhost:3000/api/request/myRequests", {
+                const response = await fetch(`${API}/api/request/myRequests`, {
                     method: "GET",
                     credentials: "include",
                 });

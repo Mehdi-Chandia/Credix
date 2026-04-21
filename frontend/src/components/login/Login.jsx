@@ -5,6 +5,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {useAuth} from "../../../context/AuthContext.jsx";
 import {toast} from "react-toastify";
 import Loader from "../Loader.jsx";
+import API from "../../config/api.js"
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ const Login = () => {
     const onSubmit =async (data) => {
         try {
             setLoading(true);
-            const res=await fetch("http://localhost:3000/api/user/login",{
+            const res=await fetch(`${API}/api/user/login`,{
                 method: "POST",
                 credentials:"include",
                 headers: {

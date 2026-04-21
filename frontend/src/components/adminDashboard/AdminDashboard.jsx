@@ -12,6 +12,7 @@ import { useAuth } from "../../../context/AuthContext.jsx";
 import {Link, useNavigate} from "react-router-dom";
 import Loader from "../Loader.jsx";
 import {toast} from "react-toastify";
+import API from "../../config/api.js";
 
 const AdminDashboard = () => {
     const [activeMenu, setActiveMenu] = useState('overview');
@@ -33,7 +34,7 @@ const AdminDashboard = () => {
     useEffect(() => {
         const fetchAllRequests = async () => {
             try {
-                const response = await fetch("http://localhost:3000/api/request/allRequests", {
+                const response = await fetch(`${API}/api/request/allRequests`, {
                     method: "GET",
                     credentials: "include",
                 });

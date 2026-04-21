@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../../context/AuthContext.jsx";
 import {toast} from "react-toastify";
+import API from "../../config/api.js";
 
 const CreateRequest = () => {
     const [documents, setDocuments] = useState([{ file: null }]);
@@ -51,7 +52,7 @@ const navigate=useNavigate();
                formData.append("documents",doc.file)
            })
 
-            const response=await fetch("http://localhost:3000/api/request/create",{
+            const response=await fetch(`${API}/api/request/create`,{
                 method: "POST",
                 credentials:"include",
                 body: formData,

@@ -2,6 +2,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import API from "../config/api.js"
 
 const ResetPassword = () => {
     const { token } = useParams();
@@ -19,7 +20,7 @@ const ResetPassword = () => {
         const verifyToken = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/api/user/verify-reset-token/${token}`
+                    `${API}/api/user/verify-reset-token/${token}`
                 );
 
                 if (response.data.message === "Token is valid") {

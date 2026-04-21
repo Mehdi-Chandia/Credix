@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {Link, useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
+import API from "../../config/api.js"
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -31,7 +32,7 @@ const navigateTo = useNavigate();
     const onSubmit =async (data) => {
        try {
            setLoading(true);
-           const result=await fetch("http://localhost:3000/api/user/register",{
+           const result=await fetch(`${API}/api/user/register`,{
                method: "POST",
                headers: {
                    "Content-Type": "application/json",
