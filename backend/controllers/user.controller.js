@@ -68,7 +68,12 @@ const token=jwt.sign(
     process.env.JWT_SECRET,
     {expiresIn: "1h"},
 )
-    res.cookie("token",token,{httpOnly:true});
+    res.cookie("token", token, {
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+        maxAge: 7 * 24 * 60 * 60 * 1000  // 7 days
+    });
 
     return res.status(200).json({message:"user successfully logged in",
         user:{
