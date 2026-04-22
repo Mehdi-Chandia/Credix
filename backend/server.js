@@ -10,9 +10,21 @@ dotenv.config();
 const app = express()
 const port = process.env.PORT || 3000;
 
+const allowedOrigins = [
+    process.env.FRONTEND_URL,
+    'http://localhost:5173',
+].filter(Boolean);
+
 app.use(cors({
-    origin: "https://credix-sigma.vercel.app",
-    credentials: true
+    origin: function (origin, callback) {
+        // Allow requests with no origin (mobile apps, curl, etc.)
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
 }));
 
 
