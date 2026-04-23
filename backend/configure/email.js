@@ -7,7 +7,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export const sendResetPasswordEmail = async (email, resetLink, userName) => {
     try {
         await resend.emails.send({
-            from: 'onboarding@resend.dev',  // Free testing domain
+            from: 'onboarding@resend.dev',
             to: email,
             subject: 'Reset Your Password',
             html: `<a href="${resetLink}">Click here to reset your password</a>`,

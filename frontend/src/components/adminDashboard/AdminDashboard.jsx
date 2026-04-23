@@ -18,7 +18,7 @@ const AdminDashboard = () => {
     const [activeMenu, setActiveMenu] = useState('overview');
     const [allRequests, setAllRequests] = useState([]);
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const { user, isloading,fetchProfile } = useAuth();
+    const { user,setUser, isloading,fetchProfile } = useAuth();
     const navigate = useNavigate();
 
     // Redirect if not logged in and not admin
@@ -64,8 +64,10 @@ const AdminDashboard = () => {
             if (!response.ok) throw new Error(result.message);
 
             await fetchProfile()
-            toast.success("logout successfully")
+            setUser(null)
             navigate("/login")
+            toast.success("logout successfully")
+
         }catch(err){
             console.log(err.message);
             alert(err.message);
@@ -183,7 +185,7 @@ const AdminDashboard = () => {
 
                 {/* Main Content */}
                 <div className="flex-1 p-4 lg:p-6">
-                    {/* Header - shows on all pages */}
+
                     <div className="ml-8 lg:ml-0">
                         <div className="flex gap-4 items-center">
                             <img src={profileGif} alt="profile" width={30} />

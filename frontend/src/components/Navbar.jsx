@@ -11,12 +11,12 @@ const Navbar=()=>{
     const [isOpen,setIsOpen]=useState(false);
     return(
         <>
-            <nav>
+            <nav className="sticky top-0 z-50 backdrop-blur-md bg-black/40 border-b border-gray-800">
       <div className="text-white flex gap-4 justify-around items-center p-4 ">
-      <div className="flex gap-2">
+      <Link to={"/"} className="flex gap-2">
           {/*<img className="top-6" src={certificate} alt="logo" width={32}/>*/}
           <h2 className="font-bold text-2xl">Credi<span className="text-[#ff3c6e] text-4xl ">X</span></h2>
-      </div>
+      </Link>
           <ul className="hidden md:flex gap-8 text-sm text-gray-400 font-light">
              <a className="hover:text-blue-400 " href={"/"}> <li>Home</li> </a>
              <a className="hover:text-blue-400" href={"/login"}> <li>Service</li></a>

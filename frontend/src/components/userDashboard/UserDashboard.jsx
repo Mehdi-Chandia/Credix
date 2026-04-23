@@ -17,7 +17,7 @@ const UserDashboard = () => {
     const [activeMenu, setActiveMenu] = useState('overview');
     const [credentials, setCredentials] = useState([]);
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const { user, isloading,fetchProfile } = useAuth();
+    const { user,setUser, isloading,fetchProfile } = useAuth();
 
     const navigate = useNavigate();
 
@@ -74,6 +74,7 @@ const UserDashboard = () => {
             if (!response.ok) throw new Error(result.message);
 
             await fetchProfile()
+            setUser(null)
             toast.success("logout successfully")
             navigate("/login")
         }catch(err){
