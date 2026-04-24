@@ -17,7 +17,7 @@ const UserDashboard = () => {
     const [activeMenu, setActiveMenu] = useState('overview');
     const [credentials, setCredentials] = useState([]);
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const { user,setUser, isloading,fetchProfile } = useAuth();
+    const { user,setUser, isloading} = useAuth();
 
     const navigate = useNavigate();
 
@@ -36,9 +36,11 @@ const UserDashboard = () => {
     };
 
     useEffect(() => {
-        if (!isloading && user) {
-            if (user.role !== "user") {
+        if (!isloading) {
+            if (!user) {
                 navigate("/login");
+            } else if (user.role !== "user") {
+                navigate("/adminDashboard");
             }
         }
     }, [user, isloading, navigate]);
@@ -73,7 +75,6 @@ const UserDashboard = () => {
             const result = await response.json();
             if (!response.ok) throw new Error(result.message);
 
-            await fetchProfile()
             setUser(null)
             toast.success("logout successfully")
             navigate("/login")
@@ -126,7 +127,7 @@ const UserDashboard = () => {
                     transition-transform duration-300 ease-in-out
                     ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
                 `}>
-                    <h2 className="font-bold text-2xl">Credi<span className="text-[#ff3c6e] text-4xl">X</span></h2>
+                    <Link to={"/"} className="font-bold text-2xl">Credi<span className="text-[#ff3c6e] text-4xl">X</span></Link>
 
                     <p className="mt-6 p-2 font-light">Main</p>
                     <div className="flex flex-col gap-6 px-3 py-2">

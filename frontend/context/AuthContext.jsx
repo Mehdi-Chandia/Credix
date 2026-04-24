@@ -44,7 +44,7 @@ export const AuthProvider = ({children}) => {
 
     return(
         <AuthContext.Provider
-            value={{fetchProfile, user,isloading}}>
+            value={{fetchProfile,setUser, user,isloading}}>
             {children}
         </AuthContext.Provider>
     )

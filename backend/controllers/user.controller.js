@@ -66,7 +66,7 @@ try {
 const token=jwt.sign(
     {userId:user._id},
     process.env.JWT_SECRET,
-    {expiresIn: "1h"},
+    {expiresIn: "7d"},
 )
     res.cookie("token", token, {
         httpOnly: true,
@@ -90,16 +90,20 @@ const token=jwt.sign(
 }
 
 
-export const logout =async (req, res) => {
+export const logout = async (req, res) => {
     try {
-        res.clearCookie("token")
+        res.clearCookie("token", {
+            httpOnly: true,
+            sameSite: "none",
+            secure: true,
+        });
 
-        return res.status(200).json({message:" logged out successfully"});
-    }catch(err) {
+        return res.status(200).json({ message: "logged out successfully" });
+    } catch (err) {
         console.log(err);
-        return res.status(500).json({message: err.message});
+        return res.status(500).json({ message: err.message });
     }
-}
+};
 
 
 export const fetchProfile =async (req, res) => {

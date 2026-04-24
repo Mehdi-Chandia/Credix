@@ -18,17 +18,19 @@ const AdminDashboard = () => {
     const [activeMenu, setActiveMenu] = useState('overview');
     const [allRequests, setAllRequests] = useState([]);
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const { user,setUser, isloading,fetchProfile } = useAuth();
+    const { user,setUser, isloading } = useAuth();
     const navigate = useNavigate();
 
     // Redirect if not logged in and not admin
     useEffect(() => {
-        if (!isloading && user) {
-            if (user.role !== "admin") {
+        if (!isloading) {
+            if (!user) {
                 navigate("/login");
-            }
+            } else if (user.role !== "admin") {
+            navigate("/adminDashboard");
         }
-    }, [user, isloading, navigate]);
+    }
+}, [user, isloading, navigate]);
 
     // Fetch all requests
     useEffect(() => {
@@ -63,7 +65,6 @@ const AdminDashboard = () => {
             const result = await response.json();
             if (!response.ok) throw new Error(result.message);
 
-            await fetchProfile()
             setUser(null)
             navigate("/login")
             toast.success("logout successfully")
@@ -152,7 +153,7 @@ const AdminDashboard = () => {
                     transition-transform duration-300 ease-in-out
                     ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
                 `}>
-                    <h2 className="font-bold text-2xl">Credi<span className="text-[#ff3c6e] text-4xl">X</span></h2>
+                    <Link to={"/"} className="font-bold text-2xl">Credi<span className="text-[#ff3c6e] text-4xl">X</span></Link>
 
                     <p className="mt-6 p-2 font-light">Main</p>
                     <div className="flex flex-col gap-6 px-3 py-2">
