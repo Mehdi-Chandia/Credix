@@ -12,6 +12,7 @@ import profileGif from "../../assets/user.gif";
 import Loader from "../Loader.jsx";
 import {toast} from "react-toastify";
 import API from "../../config/api.js";
+import RequestsChart from "../RequestChart.jsx";
 
 const UserDashboard = () => {
     const [activeMenu, setActiveMenu] = useState('overview');
@@ -93,6 +94,7 @@ const UserDashboard = () => {
         { id: 'credentials', label: 'Credentials', icon: requests },
         { id: 'renewals', label: 'Renewals', icon: clock },
         { id: 'reports', label: 'Reports', icon: reports },
+        { id:'analytics', label: 'Analytics',icon: reports}
     ];
 
     if (isloading) {
@@ -260,6 +262,15 @@ const UserDashboard = () => {
                                 <p className="text-center text-gray-500">No credentials found</p>
                             )}
                         </div>
+                    )}
+                    {/*chart*/}
+                    {activeMenu === 'analytics' && (
+                        <RequestsChart
+                            credentials={credentials}
+                            approve={approve}
+                            pending={pending}
+                            rejected={rejected}
+                        />
                     )}
 
                     {/* RENEWALS VIEW - Only approved requests with expiry */}

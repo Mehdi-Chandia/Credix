@@ -24,22 +24,22 @@ const Navbar=()=>{
              <Link className="hover:text-blue-400" to={"/contact"}> <li>Contact Us</li></Link>
           </ul>
           <div className="flex gap-2">
-              <Link to={"/signup"} className={`${user ?'hidden':''} px-4 py-2 bg-blur border border-gray-500 text-gray-300 rounded-full hover:bg-[#ff3c6e] transition-all duration-200`}>
+              <Link to={"/signup"} className={`${user ?'hidden':''} text-xs md:text-sm sm:font-extralight px-4 py-2 bg-blur border border-gray-500 text-gray-300 rounded-full hover:bg-[#ff3c6e] transition-all duration-200`}>
                   Sign Up
               </Link>
 
               {user ? (
                   user.role === "admin" ? (
-                      <Link to={"/adminDashboard"} className="md:px-6 px-4 py-2 bg-[#ff3c6e] rounded-full hover:scale-105 transition-all duration-200">
+                      <Link to={"/adminDashboard"} className="md:px-6 px-4 text-xs md:text-sm sm:font-extralight py-1 md:py-2 bg-[#ff3c6e] rounded-full hover:scale-105 transition-all duration-200">
                           Dashboard
                       </Link>
                   ) : (
-                      <Link to={"/userDashboard"} className="md:px-6 px-4 py-2 bg-[#ff3c6e] rounded-full hover:scale-105 transition-all duration-200">
+                      <Link to={"/userDashboard"} className="md:px-6 px-4 md:text-sm sm:font-extralight py-1 md:py-2 bg-[#ff3c6e] rounded-full hover:scale-105 transition-all duration-200">
                           Dashboard
                       </Link>
                   )
               ) : (
-                  <Link to={"/login"} className="md:px-6 px-4 py-2 bg-[#ff3c6e] rounded-full hover:scale-105 transition-all duration-200">
+                  <Link to={"/login"} className="md:px-6 px-4 md:text-sm sm:font-extralight py-1 md:py-2 bg-[#ff3c6e] rounded-full hover:scale-105 transition-all duration-200">
                       Start for Free
                   </Link>
               )}
