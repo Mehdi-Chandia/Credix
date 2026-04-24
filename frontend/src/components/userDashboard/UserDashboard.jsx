@@ -6,6 +6,7 @@ import overview from "../../assets/overview.png";
 import home from "../../assets/home.png";
 import Arrow from "../../assets/arrow.gif";
 import reports from "../../assets/reports.png";
+import reviews from "../../assets/reviews.gif";
 import clock from "../../assets/clock.gif";
 import requests from "../../assets/credentials.png";
 import profileGif from "../../assets/user.gif";
@@ -93,7 +94,7 @@ const UserDashboard = () => {
         { id: 'overview', label: 'OverView', icon: overview },
         { id: 'credentials', label: 'Credentials', icon: requests },
         { id: 'renewals', label: 'Renewals', icon: clock },
-        { id: 'reports', label: 'Reports', icon: reports },
+        { id: 'reviews', label: 'Reviews', icon: reviews },
         { id:'analytics', label: 'Analytics',icon: reports}
     ];
 
@@ -296,7 +297,7 @@ const UserDashboard = () => {
                     )}
 
                     {/* REPORTS VIEW - Only approved requests with review notes */}
-                    {activeMenu === 'reports' && (
+                    {activeMenu === 'reviews' && (
                         <div className="p-4">
                             <div className="flex justify-between items-center mb-4">
                                 <p className="text-sm font-medium text-gray-300">Review Notes</p>

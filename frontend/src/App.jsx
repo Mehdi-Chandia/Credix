@@ -1,7 +1,7 @@
 import './App.css'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 // Normal imports (load instantly)
@@ -25,24 +25,31 @@ const Contact = lazy(() => import("./components/Contact.jsx"));
 const About = lazy(() => import("./components/About.jsx"));
 
 function App() {
+
+    const location = useLocation();
+
+    const hideLayoutRoutes = [
+        "/login",
+        "/signup",
+        "/forgot-password",
+        "/reset-password"
+    ];
+
+    const hideLayout = hideLayoutRoutes.some(route =>
+        location.pathname.startsWith(route)
+    );
+
     return (
         <>
             <div className="min-h-screen relative">
 
                 <AnimatedBg />
 
-                <Navbar />
+                {!hideLayout && <Navbar />}
 
-                {/* Lazy loaded routes */}
-                <Suspense fallback={
-                  <Loader/>
-                }>
+                <Suspense fallback={<Loader/>}>
                     <Routes>
-                        <Route
-                            path="/"
-                            element={<HeroSection />}
-                        />
-
+                        <Route path="/" element={<HeroSection />} />
                         <Route path="/userDashboard" element={<UserDashboard />} />
                         <Route path="/adminDashboard" element={<AdminDashboard />} />
                         <Route path="/signup" element={<Signup />} />
@@ -57,10 +64,9 @@ function App() {
                     </Routes>
                 </Suspense>
 
-                <Footer />
+                {!hideLayout && <Footer />}
             </div>
 
-            {/* Toast */}
             <ToastContainer
                 position="top-right"
                 autoClose={3000}
