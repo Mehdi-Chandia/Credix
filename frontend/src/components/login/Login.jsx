@@ -58,13 +58,13 @@ const Login = () => {
                 email: "",
                 password: ""
             })
-            toast.success("logged in successfully");
+
             if(userRole =="admin"){
                 navigate("/adminDashboard");
             }else {
                 navigate("/userDashboard");
             }
-
+            toast.success("logged in successfully");
         }catch(err) {
             toast.error(err.message)
             console.log(err.message);

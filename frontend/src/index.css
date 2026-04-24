@@ -3,3 +3,14 @@
 body{
     font-family: "poppins", sans-serif;
 }
+
+.nav-link {
+    @apply relative;
+}
+.nav-link::after {
+    content: "";
+    @apply absolute left-0 -bottom-1 h-[2px] w-0 bg-blue-400 transition-all duration-300;
+}
+.nav-link:hover::after {
+    @apply w-full;
+}

@@ -18,10 +18,10 @@ const Navbar=()=>{
                         <h2 className="font-bold text-2xl">Credi<span className="text-[#ff3c6e] text-4xl ">X</span></h2>
                     </Link>
                     <ul className="hidden md:flex gap-8 text-sm text-gray-400 font-light">
-                        <Link className="hover:text-blue-400 " to={"/"}> <li>Home</li> </Link>
-                        <Link className="hover:text-blue-400" to={"/login"}> <li>Service</li></Link>
-                        <Link className="hover:text-blue-400" to={"/about"}> <li>About</li></Link>
-                        <Link className="hover:text-blue-400" to={"/contact"}> <li>Contact Us</li></Link>
+                        <Link className="hover:text-blue-400 nav-link" to={"/"}> <li>Home</li> </Link>
+                        <Link className="hover:text-blue-400 nav-link" to={"/login"}> <li>Service</li></Link>
+                        <Link className="hover:text-blue-400 nav-link" to={"/about"}> <li>About</li></Link>
+                        <Link className="hover:text-blue-400 nav-link" to={"/contact"}> <li>Contact Us</li></Link>
                     </ul>
 
                     {/* 🔥 ONLY THIS PART CHANGED */}
@@ -58,10 +58,10 @@ const Navbar=()=>{
                 {isOpen && (
                     <div className="h-56 w-full rounded-md mx-auto bg-[#ff3c6e] p-4">
                         <ul className="md:hidden flex flex-col items-center justify-center gap-8 text-sm text-white ">
-                            <Link onClick={()=> {setIsOpen(!isOpen)}} className="hover:text-blue-400" to={"/"}> <li>Home</li> </Link>
-                            <Link  onClick={()=> {setIsOpen(!isOpen)}} className="hover:text-blue-400" to={"/login"}> <li>Service</li></Link>
-                            <Link onClick={()=> {setIsOpen(!isOpen)}} className="hover:text-blue-400" to={"/about"}> <li>About</li></Link>
-                            <Link  onClick={()=> {setIsOpen(!isOpen)}} className="hover:text-blue-400" to={"/contact"}> <li>Contact Us</li></Link>
+                            <Link onClick={()=> {setIsOpen(!isOpen)}} className="hover:text-blue-400 " to={"/"}> <li>Home</li> </Link>
+                            <Link  onClick={()=> {setIsOpen(!isOpen)}} className="hover:text-blue-400 " to={"/login"}> <li>Service</li></Link>
+                            <Link onClick={()=> {setIsOpen(!isOpen)}} className="hover:text-blue-400 " to={"/about"}> <li>About</li></Link>
+                            <Link  onClick={()=> {setIsOpen(!isOpen)}} className="hover:text-blue-400 " to={"/contact"}> <li>Contact Us</li></Link>
                         </ul>
                     </div>
                 )}

@@ -78,8 +78,8 @@ const UserDashboard = () => {
             if (!response.ok) throw new Error(result.message);
 
             setUser(null)
-            toast.success("logout successfully")
             navigate("/login")
+            toast.success("logout successfully")
         }catch(err){
             console.log(err.message);
             alert(err.message);
